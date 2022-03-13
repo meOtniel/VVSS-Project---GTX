@@ -28,7 +28,6 @@ public class Main extends Application {
         PizzaService service = new PizzaService(repoMenu, payRepo);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainFXML.fxml"));
-        //VBox box = loader.load();
         Parent box = loader.load();
         MainGUIController ctrl = loader.getController();
         ctrl.setService(service);
@@ -40,7 +39,7 @@ public class Main extends Application {
             public void handle(WindowEvent event) {
                 Alert exitAlert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to exit the Main window?", ButtonType.YES, ButtonType.NO);
                 Optional<ButtonType> result = exitAlert.showAndWait();
-                if (result.get() == ButtonType.YES){
+                if (result.isPresent() && result.get() == ButtonType.YES){
                     //Stage stage = (Stage) this.getScene().getWindow();
                     System.out.println("Incasari cash: "+service.getTotalAmount(PaymentType.Cash));
                     System.out.println("Incasari card: "+service.getTotalAmount(PaymentType.Card));
@@ -55,7 +54,6 @@ public class Main extends Application {
                     event.consume();
 
                 }
-
             }
         });
         primaryStage.setScene(new Scene(box));

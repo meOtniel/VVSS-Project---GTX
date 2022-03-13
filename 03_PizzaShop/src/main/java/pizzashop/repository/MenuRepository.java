@@ -8,27 +8,25 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class MenuRepository {
-    private static String filename = "data/menu.txt";
+    private static String filename = "E:\\VVSS Labs\\VVSS-Project---GTX\\03_PizzaShop\\src\\main\\java\\pizzashop\\files\\menus.txt";
     private List<MenuDataModel> listMenu;
 
     public MenuRepository(){
     }
 
     private void readMenu(){
-        ClassLoader classLoader = MenuRepository.class.getClassLoader();
-        File file = new File(classLoader.getResource(filename).getFile());
-        this.listMenu= new ArrayList();
+        //ClassLoader classLoader = MenuRepository.class.getClassLoader();
+        //File file = new File(classLoader.getResource(filename).getFile());
+        this.listMenu= new ArrayList<>();
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader(file));
+            br = new BufferedReader(new FileReader(filename));
             String line = null;
             while((line=br.readLine())!=null){
                 MenuDataModel menuItem=getMenuItem(line);
                 listMenu.add(menuItem);
             }
             br.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

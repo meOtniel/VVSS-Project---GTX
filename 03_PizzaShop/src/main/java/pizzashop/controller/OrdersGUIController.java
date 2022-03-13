@@ -129,7 +129,7 @@ public class OrdersGUIController {
         });
 
         //Populate Combo box for Quantity
-        ObservableList<Integer> quantityValues =  FXCollections.observableArrayList(0, 1, 2,3,4,5);
+        ObservableList<Integer> quantityValues =  FXCollections.observableArrayList(1, 2,3,4,5);
         orderQuantity.getItems().addAll(quantityValues);
         orderQuantity.setPromptText("Quantity");
 

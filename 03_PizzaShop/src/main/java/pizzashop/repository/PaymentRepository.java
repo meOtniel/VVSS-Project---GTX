@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class PaymentRepository {
-    private static String filename = "data/payments.txt";
+    private static String filename = "E:\\VVSS Labs\\VVSS-Project---GTX\\03_PizzaShop\\src\\main\\java\\pizzashop\\files\\payments.txt";
     private List<Payment> paymentList;
 
     public PaymentRepository(){
@@ -20,19 +20,17 @@ public class PaymentRepository {
     }
 
     private void readPayments(){
-        ClassLoader classLoader = PaymentRepository.class.getClassLoader();
-        File file = new File(classLoader.getResource(filename).getFile());
+        //ClassLoader classLoader = PaymentRepository.class.getClassLoader();
+        //File file = new File(classLoader.getResource(filename).getFile());
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader(file));
+            br = new BufferedReader(new FileReader(filename));
             String line = null;
             while((line=br.readLine())!=null){
                 Payment payment=getPayment(line);
                 paymentList.add(payment);
             }
             br.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,12 +57,12 @@ public class PaymentRepository {
     }
 
     public void writeAll(){
-        ClassLoader classLoader = PaymentRepository.class.getClassLoader();
-        File file = new File(classLoader.getResource(filename).getFile());
+        //ClassLoader classLoader = PaymentRepository.class.getClassLoader();
+        //File file = new File(classLoader.getResource(filename).getFile());
 
         BufferedWriter bw = null;
         try {
-            bw = new BufferedWriter(new FileWriter(file));
+            bw = new BufferedWriter(new FileWriter(filename));
             for (Payment p:paymentList) {
                 System.out.println(p.toString());
                 bw.write(p.toString());
