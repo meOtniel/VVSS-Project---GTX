@@ -1,6 +1,6 @@
 package pizzashop.repository;
 
-import pizzashop.model.MenuDataModel;
+import pizzashop.model.Menu;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -8,11 +8,8 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class MenuRepository {
-    private static String filename = "E:\\VVSS Labs\\VVSS-Project---GTX\\03_PizzaShop\\src\\main\\java\\pizzashop\\files\\menus.txt";
-    private List<MenuDataModel> listMenu;
-
-    public MenuRepository(){
-    }
+    private static String filename = "E:\\LA FACULTATEEEE\\An III, sem 2\\VVSS\\Laboratoare\\VVSS-Project---GTX\\03_PizzaShop\\src\\main\\java\\pizzashop\\files\\menus.txt";
+    private List<Menu> listMenu;
 
     private void readMenu(){
         //ClassLoader classLoader = MenuRepository.class.getClassLoader();
@@ -23,7 +20,7 @@ public class MenuRepository {
             br = new BufferedReader(new FileReader(filename));
             String line = null;
             while((line=br.readLine())!=null){
-                MenuDataModel menuItem=getMenuItem(line);
+                Menu menuItem=getMenuItem(line);
                 listMenu.add(menuItem);
             }
             br.close();
@@ -32,17 +29,17 @@ public class MenuRepository {
         }
     }
 
-    private MenuDataModel getMenuItem(String line){
-        MenuDataModel item=null;
+    private Menu getMenuItem(String line){
+        Menu item=null;
         if (line==null|| line.equals("")) return null;
         StringTokenizer st=new StringTokenizer(line, ",");
         String name= st.nextToken();
         double price = Double.parseDouble(st.nextToken());
-        item = new MenuDataModel(name, 0, price);
+        item = new Menu(name, 0, price);
         return item;
     }
 
-    public List<MenuDataModel> getMenu(){
+    public List<Menu> getMenu(){
         readMenu();//create a new menu for each table, on request
         return listMenu;
     }

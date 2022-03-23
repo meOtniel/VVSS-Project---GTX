@@ -47,10 +47,10 @@ public class MainGUIController  {
 
     public void setService(PizzaService service){
         this.service=service;
-        tableHandlers();
+        setTableHandlers();
     }
 
-    private void tableHandlers(){
+    private void setTableHandlers(){
         table1.setOnAction(event -> {
             table1Orders.setTableNumber(1);
             table1Orders.displayOrdersForm(service);
