@@ -22,7 +22,12 @@ public class PizzaService {
 
     public List<Payment> getPayments(){return payRepo.getAll(); }
 
+    // validate exceptions
     public void addPayment(int table, PaymentType type, double amount){
+        if(table < 1 || table > 8)
+            throw new RuntimeException("Table must be a value in [1,8]");
+        if(amount <= 0.0)
+            throw new RuntimeException("The amount must not be a negative value!");
         Payment payment= new Payment(table, type, amount);
         payRepo.add(payment);
     }

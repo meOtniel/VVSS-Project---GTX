@@ -5,3 +5,8 @@
 4,Card,24.0
 4,Card,23.0
 2,Cash,24.0
+1,Card,0.0
+1,Cash,0.0
+1,Card,0.0
+1,Card,23.5
+1,Card,23.5
