@@ -7,6 +7,7 @@ import pizzashop.repository.MenuRepository;
 import pizzashop.repository.PaymentRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 public class PizzaService {
 
@@ -25,7 +26,7 @@ public class PizzaService {
     // validate exceptions
     public void addPayment(int table, PaymentType type, double amount){
         if(table < 1 || table > 8)
-            throw new RuntimeException("Table must be a value in [1,8]");
+            throw new RuntimeException("Table must be a value in [1,8]!");
         if(amount <= 0.0)
             throw new RuntimeException("The amount must not be a negative value!");
         Payment payment= new Payment(table, type, amount);
