@@ -113,7 +113,7 @@ public class OrdersGUIController {
         //populate table view with menuData from OrderGUI
         table.setEditable(true);
         tableMenuItem.setCellValueFactory(
-                new PropertyValueFactory<Menu, String>("menuItem"));
+                new PropertyValueFactory<Menu, String>("item"));
         tablePrice.setCellValueFactory(
                 new PropertyValueFactory<Menu, Double>("price"));
         tableQuantity.setCellValueFactory(
