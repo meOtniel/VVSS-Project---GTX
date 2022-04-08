@@ -57,4 +57,8 @@ public class PizzaService {
         return total;
     }
 
+    public void deleteAllPayments(){
+        payRepo.deleteAllPayments();
+    }
+
 }
