@@ -20,6 +20,10 @@ public class Payment {
         return amount;
     }
 
+    public int getTableNumber() {
+        return tableNumber;
+    }
+
     @Override
     public String toString() {
         return tableNumber + ","+type +"," + amount;
