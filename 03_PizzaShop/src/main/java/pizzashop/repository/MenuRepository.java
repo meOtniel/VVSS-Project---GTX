@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class MenuRepository {
-    private static String filename = "E:\\LA FACULTATEEEE\\An III, sem 2\\VVSS\\Laboratoare\\VVSS-Project---GTX\\03_PizzaShop\\src\\main\\java\\pizzashop\\files\\menus.txt";
+    private static String filename = "src/main/java/pizzashop/files/menus.txt";
     private List<Menu> listMenu;
 
     private void readMenu(){
