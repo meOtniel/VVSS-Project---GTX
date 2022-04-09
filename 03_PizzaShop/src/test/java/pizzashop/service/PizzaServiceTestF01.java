@@ -1,17 +1,14 @@
 package pizzashop.service;
 
 import org.junit.jupiter.api.*;
-import pizzashop.model.Payment;
 import pizzashop.model.PaymentType;
 import pizzashop.repository.MenuRepository;
 import pizzashop.repository.PaymentRepository;
 
-import java.lang.reflect.Type;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.Alphanumeric.class)
-class PizzaServiceTest {
+class PizzaServiceTestF01 {
     private PizzaService pizzaService;
 
     @BeforeEach

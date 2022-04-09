@@ -15,13 +15,13 @@ public class PizzaService {
     private PaymentRepository payRepo;
 
     public PizzaService(MenuRepository menuRepo, PaymentRepository payRepo){
-        this.menuRepo=menuRepo;
-        this.payRepo=payRepo;
+        this.menuRepo = menuRepo;
+        this.payRepo = payRepo;
     }
 
-    public List<Menu> getMenuData(){return menuRepo.getMenu();}
+    public List<Menu> getMenuData() { return menuRepo.getMenu(); }
 
-    public List<Payment> getPayments(){return payRepo.getAll(); }
+    public List<Payment> getPayments() { return payRepo.getAll(); }
 
     // validate exceptions
     public void addPayment(int table, PaymentType type, double amount){
@@ -29,14 +29,15 @@ public class PizzaService {
             throw new RuntimeException("Table must be a value in [1,8]!");
         if(amount <= 0.0)
             throw new RuntimeException("The amount must not be a negative value!");
-        Payment payment= new Payment(table, type, amount);
+        Payment payment = new Payment(table, type, amount);
         payRepo.add(payment);
     }
 
     public double getTotalAmount(PaymentType type){
         double total = 0.0f;
-        List<Payment> l=getPayments();
-        if ((l==null) || (l.isEmpty())) return total;
+        List<Payment> l = getPayments();
+        if ((l == null) || (l.isEmpty()))
+            return total;
 
         if (l.size() == 1){
             Payment p = l.get(0);
