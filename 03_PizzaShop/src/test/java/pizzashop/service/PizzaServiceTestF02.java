@@ -42,7 +42,7 @@ class PizzaServiceTestF02 {
 
     @Test
     @Tag("valid")
-    void getTotalAmount_TC6_WBT_valid() {
+    void getTotalAmount_TC4_WBT_invalid() {
         List<Payment> paymentList;
         Payment payment;
         double TotalSum = 0.0;
@@ -58,6 +58,42 @@ class PizzaServiceTestF02 {
 
         // testare ca s-a adaugat un nou entry in fisier
         assertEquals(countPaymentsAfter, countPaymentsBefore + 1);
+
+        // testare ca s-a adaugat in fisier entitatea corecta
+        payment = paymentList.get(paymentList.size() - 1);
+        assertEquals(3, payment.getTableNumber());
+        assertEquals(PaymentType.Cash, payment.getType());
+        assertEquals(13.5, payment.getAmount());
+
+        // testare functionalitate getTotalAmount
+        // cazul paymentList = 1
+        for(Payment p: paymentList) {
+            if (p.getType().equals(paymentType)) {
+                TotalSum += p.getAmount();
+            }
+        }
+        assertNotEquals(TotalSum, pizzaService.getTotalAmount(PaymentType.Card));
+    }
+
+    @Test
+    @Tag("valid")
+    void getTotalAmount_TC6_WBT_valid() {
+        List<Payment> paymentList;
+        Payment payment;
+        double TotalSum = 0.0;
+        PaymentType paymentType = PaymentType.Cash;
+
+        paymentList = pizzaService.getPayments();
+        int countPaymentsBefore = paymentList.size();
+
+        // testare functionalitate addPayment
+        assertDoesNotThrow (()->pizzaService.addPayment(3, PaymentType.Cash, 13.5));
+        assertDoesNotThrow (()->pizzaService.addPayment(3, PaymentType.Cash, 13.5));
+        paymentList = pizzaService.getPayments();
+        int countPaymentsAfter = paymentList.size();
+
+        // testare ca s-a adaugat un nou entry in fisier
+        assertEquals(countPaymentsAfter, countPaymentsBefore + 2);
 
         // testare ca s-a adaugat in fisier entitatea corecta
         payment = paymentList.get(paymentList.size() - 1);
